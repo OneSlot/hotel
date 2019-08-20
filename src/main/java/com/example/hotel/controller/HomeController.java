@@ -11,6 +11,6 @@ public class HomeController {
     public String home(Model model){
 
         model.addAttribute("tagline","Home Page");
-        return "home";
+        return "layout/adminlayout";
     }
 }
