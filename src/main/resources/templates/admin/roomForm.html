@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="./layout/adminlayout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+       <div layout:fragment="admin">
+
+           <div class="container">
+
+               <form th:action="@{/room}" th:object="${rooms}" class="mt-5" method="post">
+                   <div class="form-group row">
+                       <label for="rnumber" class="col-sm-2 col-form-label">Room Number</label>
+                       <div class="col-sm-10">
+                           <input type="text" th:field="*{roomsNumber}" class="form-control" id="rnumber" >
+                       </div>
+                   </div>
+
+                   <div class="form-group row">
+                       <label for="rtype" class="col-sm-2 col-form-label">Room Type</label>
+                       <div class="col-sm-10">
+                          <select name="roomtype" id="rtype" class="form-control" th:field="*{roomType}">
+                              <option th:each="roomType :${T(com.example.hotel.model.RoomType).values()}"
+                              th:value="${roomType}" th:text="${roomType}"></option>
+                          </select>
+                       </div>
+                   </div>
+
+                   <div class="form-group row">
+                       <label for="rstatus" class="col-sm-2 col-form-label">Room Status</label>
+                       <div class="col-sm-10">
+                             <select name="roomstatus" id="rstatus" class="form-control" th:field="*{roomStatus}">
+                                 <option th:each="roomStatus : ${T(com.example.hotel.model.RoomStatus).values()}"
+                                 th:value="${{roomStatus}}" th:text="${roomStatus}"></option>
+                             </select>
+                       </div>
+                   </div>
+
+
+                   <button type="submit" class="btn btn-danger shadow">Submit</button>
+
+               </form>
+
+
+
+           </div>
+
+       </div>
+
+</body>
+</html>
